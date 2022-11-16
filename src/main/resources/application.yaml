@@ -1,0 +1,21 @@
+spring:
+    datasource:
+        driverClassName: org.postgresql.Driver
+        password: mysecretpassword
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: postgres
+    jpa:
+        hibernate:
+            ddl-auto: none
+    sql:
+        init:
+            platform: postgres
+            
+logging:
+  level:
+    org:
+      springframework: ERROR
+    com:
+      mkyong: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
