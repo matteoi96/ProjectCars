@@ -10,6 +10,17 @@ spring:
     sql:
         init:
             platform: postgres
+    kafka:
+       consumer:
+         bootstrap-servers: localhost:9092
+         group-id: "my_group_id"
+         auto-offset-reset: earliest
+         key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+         value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+       producer:
+          bootstarp-servers: localhost:9092
+          key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+          value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
             
 logging:
   level:
@@ -19,3 +30,6 @@ logging:
       mkyong: DEBUG
   pattern:
     console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+    
+    
+  

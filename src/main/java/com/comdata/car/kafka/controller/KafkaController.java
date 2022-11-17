@@ -1,0 +1,23 @@
+package com.comdata.car.kafka.controller;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.comdata.car.kafka.producer.KafkaProducer;
+
+@RestController
+public class KafkaController {
+	
+	private final KafkaProducer producer;
+	
+	public KafkaController(KafkaProducer producer) {
+		this.producer=producer;
+	}
+	
+	@PostMapping("/publish")
+	public void writeMessageToTopic(@RequestParam("message") String message) {
+		this.producer.writeMessage(message);
+	}
+
+}

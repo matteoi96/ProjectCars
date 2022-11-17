@@ -2,6 +2,9 @@ package com.comdata.car.service;
 
 
 
+import java.util.Optional;
+import java.util.UUID;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -71,6 +74,18 @@ public class CarServiceImpl implements CarService {
 			return false;
 		}
 
+	}
+	@Override
+	public Car getById(UUID id) {
+		try {
+			Optional<Car> car =repository.findById(id);
+			if(car.isPresent())
+				return car.get();
+			throw new Exception();
+		} catch (Exception e) {
+			return new Car();
+		}
+	
 	}
 
 	

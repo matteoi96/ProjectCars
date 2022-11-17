@@ -2,6 +2,7 @@ package com.comdata.car.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -73,6 +74,12 @@ public class CarController {
 	public boolean delete(@RequestBody Car car) {
 		return carService.delete(car);
 
+	}
+	
+	@GetMapping("/car/{id}")
+	public CarDto getById(@PathVariable ("id") UUID id) {
+		return carToDto(carService.getById(id));
+		
 	}
 
 }
